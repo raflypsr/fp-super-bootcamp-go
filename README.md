@@ -10,14 +10,31 @@
 8. diperbolehkan jika ingin dideploy ke server (optional tidak wajib)
 
 
+* gambaran program
+- diawal register
+- user yang teregistrasi lalu login bisa crud profile
+- user yang teregistrasi lalu login sebagai admin bisa crud books 
+- user yang teregistrasi lalu login sebagai admin bisa crud categories
+- user yang teregistrasi lalu login bisa crud review
+- user yang teregistrasi lalu login bisa crd likes
+- user yang teregistrasi lalu login bisa crud comments
+
 * Plan database 
+- semuanya memiliki created_at dan updated_at
 - users
-- profile on user refrence ke user
-- reviews refrence ke books dan users
-- comments on reviews
-- books on books
+    - id, email, nama, password
+- profile refrence ke user
+    - id, umur, namalengkap, jeniskelamin, user_id
+- books
+    - id, judul, penulis, penerbit, tahunterbit,
 - categories
-- likes on reviews
+    - id, nama
+- reviews refrence ke books dan users
+    - id, user_id, book_id
+- likes refrence ke reviews dan user
+    - id, user_id, review_id
+- comments refrence ke reviews
+    - id, deskripsi, , user_id, review_id
 
 * Plan web service
 - buat register ke database
