@@ -1,7 +1,7 @@
 # fp-super-bootcamp-go
 
 1. wajib menggunakan cors (asumsikan semua frontend bisa akses) (ok)
-2. database boleh local jika tidak deploy ke server, tapi jika deploy ke server wajib database dari server juga 
+2. database boleh local jika tidak deploy ke server, tapi jika deploy ke server wajib database dari server juga (ok)
 3. wajib menggunakan GORM (ok)
 4. wajib ada tabel user, profile, komentar (ok)
 5. terdapat register, login, ganti password dan wajib ada JWT Auth Middleware (bukan basic auth) pada method yang dibutuhkan (ok)

@@ -204,6 +204,11 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/controllers.bookInput'
+      - description: 'Authorization. How to input in swagger : ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -211,6 +216,8 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/models.Books'
+      security:
+      - BearerToken: []
       summary: Create New Book.
       tags:
       - book
