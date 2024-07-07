@@ -19,14 +19,11 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	corsConfig.AllowAllOrigins = true
 	corsConfig.AllowHeaders = []string{"Content-Type", "X-XSRF-TOKEN", "Accept", "Origin", "X-Requested-With", "Authorization"}
 
-	// To be able to send tokens to the server.
 	corsConfig.AllowCredentials = true
-	// OPTIONS method for ReactJS
 	corsConfig.AddAllowMethods("OPTIONS")
 
 	r.Use(cors.New(corsConfig))
 
-	// set db to gin context
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
 	})
@@ -46,10 +43,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	bookMiddlewareRoute.DELETE("/:id", controllers.DeleteBook)
 
 	r.GET("/book", controllers.GetAllBook)
-	// r.POST("/book", controllers.CreateBook)
 	r.GET("/book/:id", controllers.GetBookById)
-	// r.PATCH("/book/:id", controllers.UpdateBook)
-	// r.DELETE("book/:id", controllers.DeleteBook)
 
 	reviewMiddlewareRoute := r.Group("/review")
 	reviewMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
@@ -58,10 +52,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	reviewMiddlewareRoute.DELETE("/:id", controllers.DeleteReview)
 
 	r.GET("/review", controllers.GetAllReview)
-	// r.POST("/review", controllers.CreateReview)
 	r.GET("/review/:id", controllers.GetReviewById)
-	// r.PATCH("/review/:id", controllers.UpdateReview)
-	// r.DELETE("review/:id", controllers.DeleteReview)
 
 	profileMiddlewareRoute := r.Group("/profile")
 	profileMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
@@ -70,10 +61,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	profileMiddlewareRoute.DELETE("/:id", controllers.DeleteProfile)
 
 	r.GET("/profile", controllers.GetAllProfile)
-	// r.POST("/profile", controllers.CreateProfile)
 	r.GET("/user/:id/profile", controllers.GetProfileByUserId)
-	// r.PATCH("/profile/:id", controllers.UpdateProfile)
-	// r.DELETE("profile/:id", controllers.DeleteProfile)
 
 	likeMiddlewareRoute := r.Group("/like")
 	likeMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
@@ -81,8 +69,6 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	likeMiddlewareRoute.DELETE("/:id", controllers.DeleteLike)
 
 	r.GET("/like", controllers.GetAllLike)
-	// r.POST("/like", controllers.CreateLike)
-	// r.DELETE("like/:id", controllers.DeleteLike)
 
 	commentMiddlewareRoute := r.Group("/comment")
 	commentMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
@@ -91,9 +77,6 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	commentMiddlewareRoute.DELETE("/:id", controllers.DeleteComment)
 
 	r.GET("/comment", controllers.GetAllComment)
-	// r.POST("/comment", controllers.CreateComment)
-	// r.PATCH("/comment/:id", controllers.UpdateComment)
-	// r.DELETE("comment/:id", controllers.DeleteComment)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 

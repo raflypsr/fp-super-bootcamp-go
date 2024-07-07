@@ -19,12 +19,10 @@ import (
 // @termsOfService http://swagger.io/terms/
 
 func main() {
-	// for load godotenv
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	//programmatically set swagger info
 	docs.SwaggerInfo.Title = "Book Review API"
 	docs.SwaggerInfo.Host = "localhost:8080"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
