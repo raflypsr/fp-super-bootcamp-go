@@ -4,6 +4,7 @@ import (
 	"fp-super-bootcamp-go/config"
 	"fp-super-bootcamp-go/docs"
 	"fp-super-bootcamp-go/routes"
+	"fp-super-bootcamp-go/utils"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -19,13 +20,27 @@ import (
 // @termsOfService http://swagger.io/terms/
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	// for load godotenv
+	// for env
+	environment := utils.Getenv("ENVIRONMENT", "development")
+
+	if environment == "development" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
-	docs.SwaggerInfo.Title = "Book Review API"
-	docs.SwaggerInfo.Host = "localhost:8080"
-	docs.SwaggerInfo.Schemes = []string{"http", "https"}
+
+	//programmatically set swagger info
+	docs.SwaggerInfo.Title = "Review Book REST API"
+	docs.SwaggerInfo.Description = "This is REST API Review Book."
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.Host = utils.Getenv("HOST", "localhost:8080")
+	if environment == "development" {
+		docs.SwaggerInfo.Schemes = []string{"http", "https"}
+	} else {
+		docs.SwaggerInfo.Schemes = []string{"https"}
+	}
 
 	db := config.ConnectDataBase()
 	sqlDB, _ := db.DB()
@@ -33,4 +48,5 @@ func main() {
 
 	r := routes.SetupRouter(db)
 	r.Run()
+
 }
