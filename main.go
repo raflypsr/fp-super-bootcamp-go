@@ -35,7 +35,7 @@ func main() {
 	docs.SwaggerInfo.Title = "Review Book REST API"
 	docs.SwaggerInfo.Description = "This is REST API Review Book."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = utils.Getenv("HOST", "https://fp-book-review-app.up.railway.app/")
+	docs.SwaggerInfo.Host = utils.Getenv("HOST", "fp-book-review-app.up.railway.app")
 	if environment == "development" {
 		docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	} else {
