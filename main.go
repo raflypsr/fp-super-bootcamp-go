@@ -36,11 +36,7 @@ func main() {
 	docs.SwaggerInfo.Description = "This is REST API Review Book."
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.Host = utils.Getenv("HOST", "fp-book-review-app.up.railway.app")
-	if environment == "development" {
-		docs.SwaggerInfo.Schemes = []string{"https"}
-	} else {
-		docs.SwaggerInfo.Schemes = []string{"https"}
-	}
+	docs.SwaggerInfo.Schemes = []string{"https"}
 
 	db := config.ConnectDataBase()
 	sqlDB, _ := db.DB()
