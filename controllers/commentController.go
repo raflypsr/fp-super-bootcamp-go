@@ -11,9 +11,9 @@ import (
 )
 
 type commentInput struct {
-	Deskripsi string `json:"deskripsi"`
-	UserID    uint   `json:"user_id"`
-	ReviewID  uint   `json:"review_id"`
+	Deskripsi string `json:"deskripsi" binding:"required"`
+	UserID    uint   `json:"user_id" binding:"required"`
+	ReviewID  uint   `json:"review_id" binding:"required"`
 }
 
 // GetAllComment godoc

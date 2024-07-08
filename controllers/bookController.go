@@ -11,10 +11,10 @@ import (
 )
 
 type bookInput struct {
-	Judul       string `json:"judul"`
-	Penulis     string `json:"penulis"`
-	Penerbit    string `json:"penerbit"`
-	TahunTerbit int    `json:"tahun_terbit"`
+	Judul       string `json:"judul" binding:"required"`
+	Penulis     string `json:"penulis" binding:"required"`
+	Penerbit    string `json:"penerbit" binding:"required"`
+	TahunTerbit int    `json:"tahun_terbit" binding:"required"`
 }
 
 // GetAllBook godoc

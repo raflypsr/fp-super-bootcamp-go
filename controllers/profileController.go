@@ -11,10 +11,10 @@ import (
 )
 
 type profileInput struct {
-	Umur         int    `json:"umur"`
-	NamaLengkap  string `json:"nama_lengkap"`
-	JenisKelamin string `json:"jenis_kelamin"`
-	UserID       uint   `json:"user_id"`
+	Umur         int    `json:"umur" binding:"required"`
+	NamaLengkap  string `json:"nama_lengkap" binding:"required"`
+	JenisKelamin string `json:"jenis_kelamin" binding:"required"`
+	UserID       uint   `json:"user_id" binding:"required"`
 }
 
 // GetAllUser godoc

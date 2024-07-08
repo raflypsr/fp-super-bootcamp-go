@@ -10,8 +10,8 @@ import (
 )
 
 type likeInput struct {
-	UserID   uint `json:"user_id"`
-	ReviewID uint `json:"review_id"`
+	UserID   uint `json:"user_id" binding:"required"`
+	ReviewID uint `json:"review_id" binding:"required"`
 }
 
 // GetAllLike godoc

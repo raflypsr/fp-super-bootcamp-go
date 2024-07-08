@@ -11,9 +11,9 @@ import (
 )
 
 type reviewInput struct {
-	Deskripsi string `json:"deskripsi"`
-	UserID    uint   `json:"user_id"`
-	BookID    uint   `json:"book_id"`
+	Deskripsi string `json:"deskripsi" binding:"required"`
+	UserID    uint   `json:"user_id" binding:"required"`
+	BookID    uint   `json:"book_id" binding:"required"`
 }
 
 // GetAllReview godoc
