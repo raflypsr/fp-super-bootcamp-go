@@ -44,17 +44,24 @@ func Login(c *gin.Context) {
 
 	token, err := models.LoginCheck(u.Username, u.Password, db)
 
+	var user models.Users
+	if err := db.Where("username = ?", input.Username).First(&user).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "username or password is incorrect."})
+		return
+	}
+
 	if err != nil {
 		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "username or password is incorrect."})
 		return
 	}
 
-	user := map[string]string{
-		"username": u.Username,
+	response := map[string]string{
+		"username": user.Username,
+		"role":     user.Role,
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "login success", "user": user, "token": token})
+	c.JSON(http.StatusOK, gin.H{"message": "login success", "user": response, "token": token})
 
 }
 
@@ -80,6 +87,7 @@ func Register(c *gin.Context) {
 	u.Username = input.Username
 	u.Email = input.Email
 	u.Password = input.Password
+	u.Role = "user"
 
 	_, err := u.SaveUser(db)
 

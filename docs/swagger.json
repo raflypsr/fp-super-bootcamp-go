@@ -1072,6 +1072,12 @@
         },
         "controllers.bookInput": {
             "type": "object",
+            "required": [
+                "judul",
+                "penerbit",
+                "penulis",
+                "tahun_terbit"
+            ],
             "properties": {
                 "judul": {
                     "type": "string"
@@ -1089,6 +1095,11 @@
         },
         "controllers.commentInput": {
             "type": "object",
+            "required": [
+                "deskripsi",
+                "review_id",
+                "user_id"
+            ],
             "properties": {
                 "deskripsi": {
                     "type": "string"
@@ -1103,6 +1114,10 @@
         },
         "controllers.likeInput": {
             "type": "object",
+            "required": [
+                "review_id",
+                "user_id"
+            ],
             "properties": {
                 "review_id": {
                     "type": "integer"
@@ -1114,6 +1129,12 @@
         },
         "controllers.profileInput": {
             "type": "object",
+            "required": [
+                "jenis_kelamin",
+                "nama_lengkap",
+                "umur",
+                "user_id"
+            ],
             "properties": {
                 "jenis_kelamin": {
                     "type": "string"
@@ -1131,6 +1152,11 @@
         },
         "controllers.reviewInput": {
             "type": "object",
+            "required": [
+                "book_id",
+                "deskripsi",
+                "user_id"
+            ],
             "properties": {
                 "book_id": {
                     "type": "integer"
@@ -1150,6 +1176,9 @@
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                },
+                "role": {
                     "type": "string"
                 },
                 "username": {
@@ -1288,6 +1317,9 @@
                     "type": "integer"
                 },
                 "password": {
+                    "type": "string"
+                },
+                "role": {
                     "type": "string"
                 },
                 "updated_at": {

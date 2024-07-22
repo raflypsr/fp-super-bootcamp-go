@@ -15,6 +15,7 @@ type userInput struct {
 	Email    string `json:"email"`
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Role     string `json:"role"`
 }
 
 // GetAllUser godoc
@@ -84,6 +85,7 @@ func UpdateUser(c *gin.Context) {
 	var updatedInput models.Users
 	updatedInput.Username = input.Username
 	updatedInput.Email = input.Email
+	updatedInput.Role = input.Role
 
 	if input.Password != "" {
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.DefaultCost)

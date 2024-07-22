@@ -17,6 +17,7 @@ type (
 		Email     string     `gorm:"type:varchar(255); unique; not null;" json:"email"`
 		Username  string     `gorm:"type:varchar(255); not null;" json:"username"`
 		Password  string     `gorm:"not null;" json:"password"`
+		Role      string     `json:"role"`
 		CreatedAt time.Time  `gorm:"not null;" json:"created_at"`
 		UpdatedAt time.Time  `gorm:"not null;" json:"updated_at"`
 		Profile   Profile    `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`

@@ -1083,6 +1083,12 @@ const docTemplate = `{
         },
         "controllers.bookInput": {
             "type": "object",
+            "required": [
+                "judul",
+                "penerbit",
+                "penulis",
+                "tahun_terbit"
+            ],
             "properties": {
                 "judul": {
                     "type": "string"
@@ -1100,6 +1106,11 @@ const docTemplate = `{
         },
         "controllers.commentInput": {
             "type": "object",
+            "required": [
+                "deskripsi",
+                "review_id",
+                "user_id"
+            ],
             "properties": {
                 "deskripsi": {
                     "type": "string"
@@ -1114,6 +1125,10 @@ const docTemplate = `{
         },
         "controllers.likeInput": {
             "type": "object",
+            "required": [
+                "review_id",
+                "user_id"
+            ],
             "properties": {
                 "review_id": {
                     "type": "integer"
@@ -1125,6 +1140,12 @@ const docTemplate = `{
         },
         "controllers.profileInput": {
             "type": "object",
+            "required": [
+                "jenis_kelamin",
+                "nama_lengkap",
+                "umur",
+                "user_id"
+            ],
             "properties": {
                 "jenis_kelamin": {
                     "type": "string"
@@ -1142,6 +1163,11 @@ const docTemplate = `{
         },
         "controllers.reviewInput": {
             "type": "object",
+            "required": [
+                "book_id",
+                "deskripsi",
+                "user_id"
+            ],
             "properties": {
                 "book_id": {
                     "type": "integer"
@@ -1161,6 +1187,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                },
+                "role": {
                     "type": "string"
                 },
                 "username": {
@@ -1299,6 +1328,9 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "password": {
+                    "type": "string"
+                },
+                "role": {
                     "type": "string"
                 },
                 "updated_at": {
