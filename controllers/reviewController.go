@@ -12,6 +12,7 @@ import (
 
 type reviewInput struct {
 	Deskripsi string `json:"deskripsi" binding:"required"`
+	Judul string `json:"deskripsi" binding:"required"`
 	UserID    uint   `json:"user_id" binding:"required"`
 	BookID    uint   `json:"book_id" binding:"required"`
 }
@@ -50,7 +51,7 @@ func CreateReview(c *gin.Context) {
 		return
 	}
 
-	review := models.Reviews{Deskripsi: input.Deskripsi, UserID: input.UserID, BookID: input.BookID}
+	review := models.Reviews{Deskripsi: input.Deskripsi, Judul: input.Judul, UserID: input.UserID, BookID: input.BookID}
 	db.Create(&review)
 
 	c.JSON(http.StatusOK, gin.H{"data": review})
@@ -105,6 +106,7 @@ func UpdateReview(c *gin.Context) {
 	}
 
 	var updatedInput models.Reviews
+	updatedInput.Judul = input.Judul
 	updatedInput.Deskripsi = input.Deskripsi
 	updatedInput.UserID = input.UserID
 	updatedInput.BookID = input.BookID
