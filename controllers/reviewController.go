@@ -12,7 +12,7 @@ import (
 
 type reviewInput struct {
 	Deskripsi string `json:"deskripsi" binding:"required"`
-	Judul string `json:"deskripsi" binding:"required"`
+	Judul string `json:"judul" binding:"required"`
 	UserID    uint   `json:"user_id" binding:"required"`
 	BookID    uint   `json:"book_id" binding:"required"`
 }
