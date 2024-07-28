@@ -7,7 +7,7 @@ import (
 type (
 	Reviews struct {
 		ID        uint       `gorm:"primary_key" json:"id"`
-		Judul 	  string     `gorm:"not null" json:"judul"`
+		Judul 	  string     `json:"judul"`
 		Deskripsi string     `gorm:"not null" json:"deskripsi"`
 		CreatedAt time.Time  `gorm:"not null" json:"created_at"`
 		UpdatedAt time.Time  `gorm:"not null" json:"updated_at"`
