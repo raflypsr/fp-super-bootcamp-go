@@ -26,6 +26,7 @@ var (
 )
 
 func init() {
+	gin.SetMode(gin.ReleaseMode)
 	App = gin.New()
 	// for load godotenv
 	// for env
