@@ -12,8 +12,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 )
 
-func SetupRouter(db *gorm.DB) *gin.Engine {
-	r := gin.Default()
+func SetupRouter(db *gorm.DB, r *gin.Engine) {
 
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
@@ -80,5 +79,4 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	return r
 }

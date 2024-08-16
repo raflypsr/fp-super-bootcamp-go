@@ -46,11 +46,8 @@ func init() {
 	docs.SwaggerInfo.Schemes = []string{"https"}
 
 	db := config.ConnectDataBase()
-	sqlDB, _ := db.DB()
-	defer sqlDB.Close()
 
-	r := routes.SetupRouter(db)
-	r.Run()
+	routes.SetupRouter(db, App)
 }
 
 // Entrypoint
