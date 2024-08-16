@@ -12,21 +12,11 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
-
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @termsOfService http://swagger.io/terms/
-
 var (
 	App *gin.Engine
 )
 
 func init() {
-	gin.SetMode(gin.ReleaseMode)
 	App = gin.New()
 	// for load godotenv
 	// for env
