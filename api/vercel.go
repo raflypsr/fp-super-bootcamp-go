@@ -21,7 +21,7 @@ func init() {
 	App = gin.New()
 	// for load godotenv
 	// for env
-	environment := utils.Getenv("ENVIRONMENT", "development")
+	environment := utils.Getenv("ENVIRONMENT", "production")
 
 	if environment == "development" {
 		err := godotenv.Load()
