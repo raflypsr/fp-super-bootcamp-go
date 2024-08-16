@@ -12,7 +12,7 @@ import (
 )
 
 func ConnectDataBase() *gorm.DB {
-	dbProvider := utils.Getenv("DB_PROVIDER", "mysql")
+	dbProvider := utils.Getenv("DB_PROVIDER", "postgres")
 	var db *gorm.DB
 
 	if dbProvider == "postgres" {

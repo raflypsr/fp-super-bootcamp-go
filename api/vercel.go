@@ -7,6 +7,7 @@ import (
 	"fp-super-bootcamp-go/utils"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -33,8 +34,13 @@ func init() {
 	docs.SwaggerInfo.Title = "Review Book REST API"
 	docs.SwaggerInfo.Description = "This is REST API Review Book."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = utils.Getenv("HOST", "fp-book-review-app.up.railway.app")
-	docs.SwaggerInfo.Schemes = []string{"https"}
+	if environment == "development" {
+		docs.SwaggerInfo.Host = utils.Getenv("HOST", "localhost:8080")
+		docs.SwaggerInfo.Schemes = []string{"http", "https"}
+	} else {
+		docs.SwaggerInfo.Host = os.Getenv("HOST")
+		docs.SwaggerInfo.Schemes = []string{"https"}
+	}
 
 	db := config.ConnectDataBase()
 
