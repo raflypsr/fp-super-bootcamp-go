@@ -51,6 +51,11 @@ func CreateReview(c *gin.Context) {
 		return
 	}
 
+	if len(input.Deskripsi) < 15 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "deskripsi harus lebih dari 15"})
+		return
+	}
+
 	review := models.Reviews{Deskripsi: input.Deskripsi, Judul: input.Judul, UserID: input.UserID, BookID: input.BookID}
 	db.Create(&review)
 
@@ -102,6 +107,11 @@ func UpdateReview(c *gin.Context) {
 	var input reviewInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if len(input.Deskripsi) < 15 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "deskripsi harus lebih dari 15"})
 		return
 	}
 
