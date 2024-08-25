@@ -85,7 +85,7 @@ func GetBookById(c *gin.Context) {
 // @Param id path string true "Book id"
 // @Param Body body bookInput true "the body to update book"
 // @Success 200 {object} models.Books
-// @Router /book/{id} [patch]
+// @Router /book/{id} [put]
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
 func UpdateBook(c *gin.Context) {

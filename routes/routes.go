@@ -32,13 +32,13 @@ func SetupRouter(db *gorm.DB, r *gin.Engine) {
 
 	r.GET("/user", controllers.GetAllUser)
 	r.GET("/user/:id", controllers.GetUserById)
-	r.PATCH("/user/:id", controllers.UpdateUser)
+	r.PUT("/user/:id", controllers.UpdateUser)
 	r.DELETE("user/:id", controllers.DeleteUser)
 
 	bookMiddlewareRoute := r.Group("/book")
 	bookMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
 	bookMiddlewareRoute.POST("", controllers.CreateBook)
-	bookMiddlewareRoute.PATCH("/:id", controllers.UpdateBook)
+	bookMiddlewareRoute.PUT("/:id", controllers.UpdateBook)
 	bookMiddlewareRoute.DELETE("/:id", controllers.DeleteBook)
 
 	r.GET("/book", controllers.GetAllBook)
@@ -47,7 +47,7 @@ func SetupRouter(db *gorm.DB, r *gin.Engine) {
 	reviewMiddlewareRoute := r.Group("/review")
 	reviewMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
 	reviewMiddlewareRoute.POST("", controllers.CreateReview)
-	reviewMiddlewareRoute.PATCH("/:id", controllers.UpdateReview)
+	reviewMiddlewareRoute.PUT("/:id", controllers.UpdateReview)
 	reviewMiddlewareRoute.DELETE("/:id", controllers.DeleteReview)
 
 	r.GET("/review", controllers.GetAllReview)
@@ -56,7 +56,7 @@ func SetupRouter(db *gorm.DB, r *gin.Engine) {
 	profileMiddlewareRoute := r.Group("/profile")
 	profileMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
 	profileMiddlewareRoute.POST("", controllers.CreateProfile)
-	profileMiddlewareRoute.PATCH("/:id", controllers.UpdateProfile)
+	profileMiddlewareRoute.PUT("/:id", controllers.UpdateProfile)
 	profileMiddlewareRoute.DELETE("/:id", controllers.DeleteProfile)
 
 	r.GET("/profile", controllers.GetAllProfile)
@@ -72,7 +72,7 @@ func SetupRouter(db *gorm.DB, r *gin.Engine) {
 	commentMiddlewareRoute := r.Group("/comment")
 	commentMiddlewareRoute.Use(middlewares.JwtAuthMiddleware())
 	commentMiddlewareRoute.POST("", controllers.CreateComment)
-	commentMiddlewareRoute.PATCH("/:id", controllers.UpdateComment)
+	commentMiddlewareRoute.PUT("/:id", controllers.UpdateComment)
 	commentMiddlewareRoute.DELETE("/:id", controllers.DeleteComment)
 
 	r.GET("/comment", controllers.GetAllComment)

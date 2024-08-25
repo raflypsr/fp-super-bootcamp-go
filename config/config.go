@@ -21,7 +21,7 @@ func ConnectDataBase() *gorm.DB {
 		host := os.Getenv("DB_HOST")
 		port := os.Getenv("DB_PORT")
 		database := os.Getenv("DB_NAME")
-		// production
+
 		dsn := "host=" + host + " user=" + username + " password=" + password + " dbname=" + database + " port=" + port + " sslmode=require"
 		dbGorm, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		if err != nil {
@@ -32,10 +32,10 @@ func ConnectDataBase() *gorm.DB {
 
 	} else {
 		username := utils.Getenv("DB_USERNAME", "root")
-		password := utils.Getenv("DB_PASSWORD", "root")
+		password := utils.Getenv("DB_PASSWORD", "")
 		host := utils.Getenv("DB_HOST", "127.0.0.1")
 		port := utils.Getenv("DB_PORT", "3306")
-		database := utils.Getenv("DB_NAME", "db_name")
+		database := utils.Getenv("DB_NAME", "review_book")
 
 		dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", username, password, host, port, database)
 
@@ -52,5 +52,4 @@ func ConnectDataBase() *gorm.DB {
 	db.AutoMigrate(&models.Users{}, &models.Books{}, &models.Comments{}, &models.Likes{}, &models.Profile{}, &models.Reviews{})
 
 	return db
-
 }

@@ -86,7 +86,7 @@ func GetProfileByUserId(c *gin.Context) { // Get model if exist
 // @Param id path string true "Profile id"
 // @Param Body body profileInput true "the body to update profile"
 // @Success 200 {object} models.Profile
-// @Router /profile/{id} [patch]
+// @Router /profile/{id} [put]
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
 func UpdateProfile(c *gin.Context) {

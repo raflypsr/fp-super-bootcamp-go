@@ -12,7 +12,7 @@ import (
 
 type reviewInput struct {
 	Deskripsi string `json:"deskripsi" binding:"required"`
-	Judul string `json:"judul"`
+	Judul     string `json:"judul"`
 	UserID    uint   `json:"user_id" binding:"required"`
 	BookID    uint   `json:"book_id" binding:"required"`
 }
@@ -85,7 +85,7 @@ func GetReviewById(c *gin.Context) {
 // @Param id path string true "Review id"
 // @Param Body body reviewInput true "the body to update review"
 // @Success 200 {object} models.Reviews
-// @Router /review/{id} [patch]
+// @Router /review/{id} [put]
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
 func UpdateReview(c *gin.Context) {

@@ -19,8 +19,6 @@ var (
 
 func init() {
 	App = gin.New()
-	// for load godotenv
-	// for env
 	environment := utils.Getenv("ENVIRONMENT", "production")
 
 	if environment == "development" {
@@ -48,6 +46,9 @@ func init() {
 }
 
 // Entrypoint
+// Vercel memanggil Handler() untuk setiap request yang masuk.
+// Handler() meneruskan request tersebut ke instance App (Gin engine) untuk diproses.
+// Vercel kemudian mengirimkan respons dari App.ServeHTTP() kembali ke klien.
 func Handler(w http.ResponseWriter, r *http.Request) {
 	App.ServeHTTP(w, r)
 }

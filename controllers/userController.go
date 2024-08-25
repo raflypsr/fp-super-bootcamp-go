@@ -61,7 +61,7 @@ func GetUserById(c *gin.Context) { // Get model if exist
 // @Param id path string true "User id"
 // @Param Body body userInput true "the body to update user"
 // @Success 200 {object} models.Users
-// @Router /user/{id} [patch]
+// @Router /user/{id} [put]
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
 func UpdateUser(c *gin.Context) {

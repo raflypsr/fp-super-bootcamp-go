@@ -64,7 +64,7 @@ func CreateComment(c *gin.Context) {
 // @Param id path string true "Comment id"
 // @Param Body body commentInput true "the body to update comment"
 // @Success 200 {object} models.Comments
-// @Router /comment/{id} [patch]
+// @Router /comment/{id} [put]
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
 func UpdateComment(c *gin.Context) {
