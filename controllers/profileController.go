@@ -51,6 +51,11 @@ func CreateProfile(c *gin.Context) {
 		return
 	}
 
+	if !validateGender(input.JenisKelamin) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "gender harus 'pria' atau wanita"})
+		return
+	}
+
 	profile := models.Profile{Umur: input.Umur, NamaLengkap: input.NamaLengkap, JenisKelamin: input.JenisKelamin, UserID: input.UserID}
 	db.Create(&profile)
 
@@ -105,6 +110,11 @@ func UpdateProfile(c *gin.Context) {
 		return
 	}
 
+	if !validateGender(input.JenisKelamin) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "gender harus 'pria' atau wanita"})
+		return
+	}
+
 	var updatedInput models.Profile
 	updatedInput.Umur = input.Umur
 	updatedInput.NamaLengkap = input.NamaLengkap
@@ -137,4 +147,12 @@ func DeleteProfile(c *gin.Context) {
 	db.Delete(&profile)
 
 	c.JSON(http.StatusOK, gin.H{"data": true})
+}
+
+func validateGender(gender string) bool {
+	if gender == "pria" || gender == "wanita" {
+		return true
+	}
+
+	return false
 }
