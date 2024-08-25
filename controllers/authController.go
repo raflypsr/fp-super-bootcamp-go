@@ -100,7 +100,7 @@ func Register(c *gin.Context) {
 		return re.MatchString(email)
 	}
 
-	if isValidEmail(input.Email) {
+	if !isValidEmail(input.Email) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "struktur email harus valid"})
 		return
 	}
