@@ -51,6 +51,14 @@ func CreateBook(c *gin.Context) {
 		return
 	}
 
+	if len(input.Penerbit) < 3 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "penerbit tidak boleh kurang dari 3 karakter"})
+	}
+
+	if input.TahunTerbit < 1500 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "tahun terbit tidak boleh kurang dari tahun 1500"})
+	}
+
 	user := models.Books{Judul: input.Judul, Penulis: input.Penulis, Penerbit: input.Penerbit, TahunTerbit: input.TahunTerbit}
 	db.Create(&user)
 
@@ -103,6 +111,14 @@ func UpdateBook(c *gin.Context) {
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
+	}
+
+	if len(input.Penerbit) < 3 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "penerbit tidak boleh kurang dari 3 karakter"})
+	}
+
+	if input.TahunTerbit < 1500 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "tahun terbit tidak boleh kurang dari tahun 1500"})
 	}
 
 	var updatedInput models.Books
