@@ -81,6 +81,21 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
+	if len(input.Password) < 8 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal password harus 8 karakter"})
+		return
+	}
+
+	if len(input.Username) < 3 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal username harus 3 karakter"})
+		return
+	}
+
+	if !isValidEmail(input.Email) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "struktur email harus valid"})
+		return
+	}
+
 	// Create updated input with hashed password if password is provided
 	var updatedInput models.Users
 	updatedInput.Username = input.Username
