@@ -83,6 +83,8 @@ definitions:
         type: integer
       deskripsi:
         type: string
+      judul:
+        type: string
       user_id:
         type: integer
     required:
@@ -173,6 +175,8 @@ definitions:
         type: string
       id:
         type: integer
+      judul:
+        type: string
       updated_at:
         type: string
       user_id:
@@ -196,14 +200,7 @@ definitions:
         type: string
     type: object
 info:
-  contact:
-    email: support@swagger.io
-    name: API Support
-    url: http://www.swagger.io/support
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  termsOfService: http://swagger.io/terms/
+  contact: {}
 paths:
   /book:
     get:
@@ -292,7 +289,7 @@ paths:
       summary: Get Book.
       tags:
       - book
-    patch:
+    put:
       description: Update Book by id.
       parameters:
       - description: Book id
@@ -392,7 +389,7 @@ paths:
       summary: Delete comment.
       tags:
       - comment
-    patch:
+    put:
       description: Update Comment by id.
       parameters:
       - description: Comment id
@@ -582,7 +579,7 @@ paths:
       summary: Delete profile.
       tags:
       - profile
-    patch:
+    put:
       description: Update Profile by id.
       parameters:
       - description: Profile id
@@ -721,7 +718,7 @@ paths:
       summary: Get review.
       tags:
       - review
-    patch:
+    put:
       description: Update Review by id.
       parameters:
       - description: Review id
@@ -813,7 +810,7 @@ paths:
       summary: Get user.
       tags:
       - user
-    patch:
+    put:
       description: Update User by id.
       parameters:
       - description: User id
