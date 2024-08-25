@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"fp-super-bootcamp-go/models"
 	"net/http"
+	"regexp"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -84,6 +85,21 @@ func Register(c *gin.Context) {
 
 	u := models.Users{}
 
+	if len(input.Password) < 8 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal password harus 8 karakter"})
+		return
+	}
+
+	if len(input.Username) < 3 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal username harus 3 karakter"})
+		return
+	}
+
+	if !isValidEmail(input.Email) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "struktur email harus valid"})
+		return
+	}
+
 	u.Username = input.Username
 	u.Email = input.Email
 	u.Password = input.Password
@@ -103,4 +119,9 @@ func Register(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "registration success", "user": user})
 
+}
+
+func isValidEmail(email string) bool {
+	re := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+	return re.MatchString(email)
 }
