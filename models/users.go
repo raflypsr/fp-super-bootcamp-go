@@ -1,7 +1,6 @@
 package models
 
 import (
-	"html"
 	"strings"
 	"time"
 
@@ -67,9 +66,9 @@ func (u *Users) SaveUser(db *gorm.DB) (*Users, error) {
 	}
 	u.Password = string(hashedPassword)
 	//remove spaces in username
-	u.Username = html.EscapeString(strings.TrimSpace(u.Username))
+	u.Username = strings.TrimSpace(u.Username)
 
-	var err error = db.Create(&u).Error
+	err := db.Create(&u).Error
 	if err != nil {
 		return &Users{}, err
 	}

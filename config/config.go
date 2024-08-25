@@ -4,14 +4,20 @@ import (
 	"fmt"
 	"fp-super-bootcamp-go/models"
 	"fp-super-bootcamp-go/utils"
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 func ConnectDataBase() *gorm.DB {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	dbProvider := utils.Getenv("DB_PROVIDER", "postgres")
 	var db *gorm.DB
 

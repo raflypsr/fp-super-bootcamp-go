@@ -37,7 +37,7 @@ func init() {
 		docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	} else {
 		docs.SwaggerInfo.Host = os.Getenv("HOST")
-		docs.SwaggerInfo.Schemes = []string{"https"}
+		docs.SwaggerInfo.Schemes = []string{"http"}
 	}
 
 	db := config.ConnectDataBase()
