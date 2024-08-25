@@ -87,10 +87,12 @@ func Register(c *gin.Context) {
 
 	if len(input.Password) < 8 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal password harus 8 karakter"})
+		return
 	}
 
 	if len(input.Username) < 3 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "minimal username harus 3 karakter"})
+		return
 	}
 
 	var isValidEmail = func(email string) bool {
@@ -100,6 +102,7 @@ func Register(c *gin.Context) {
 
 	if isValidEmail(input.Email) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "struktur email harus valid"})
+		return
 	}
 
 	u.Username = input.Username
