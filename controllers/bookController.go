@@ -53,10 +53,12 @@ func CreateBook(c *gin.Context) {
 
 	if len(input.Penerbit) < 3 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "penerbit tidak boleh kurang dari 3 karakter"})
+		return
 	}
 
 	if input.TahunTerbit < 1500 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "tahun terbit tidak boleh kurang dari tahun 1500"})
+		return
 	}
 
 	user := models.Books{Judul: input.Judul, Penulis: input.Penulis, Penerbit: input.Penerbit, TahunTerbit: input.TahunTerbit}
@@ -115,10 +117,12 @@ func UpdateBook(c *gin.Context) {
 
 	if len(input.Penerbit) < 3 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "penerbit tidak boleh kurang dari 3 karakter"})
+		return
 	}
 
 	if input.TahunTerbit < 1500 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "tahun terbit tidak boleh kurang dari tahun 1500"})
+		return
 	}
 
 	var updatedInput models.Books
