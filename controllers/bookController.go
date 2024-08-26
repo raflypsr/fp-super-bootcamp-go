@@ -27,7 +27,7 @@ type bookInput struct {
 func GetAllBook(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var books []models.Books
-	db.Find(&books)
+	db.Preload("Reviews").Find(&books)
 
 	c.JSON(http.StatusOK, gin.H{"data": books})
 }
