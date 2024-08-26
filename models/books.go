@@ -13,6 +13,6 @@ type (
 		TahunTerbit int       `gorm:"type:int; not null" json:"tahun_terbit"`
 		CreatedAt   time.Time `gorm:"not null" json:"created_at"`
 		UpdatedAt   time.Time `gorm:"not null" json:"updated_at"`
-		Reviews     []Reviews `gorm:"foreignKey:BookID; constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
+		Reviews     []Reviews `gorm:"foreignKey:BookID; constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 	}
 )
