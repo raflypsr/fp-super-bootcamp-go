@@ -27,7 +27,7 @@ type reviewInput struct {
 func GetAllReview(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var reviews []models.Reviews
-	db.Find(&reviews)
+	db.Preload("Likes").Preload("Comments").Find(&reviews)
 
 	c.JSON(http.StatusOK, gin.H{"data": reviews})
 }

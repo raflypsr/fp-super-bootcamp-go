@@ -28,7 +28,7 @@ type userInput struct {
 func GetAllUser(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var users []models.Users
-	db.Find(&users)
+	db.Preload("Profiles").Preload("Reviews").Preload("Likes").Preload("Comments").Find(&users)
 
 	c.JSON(http.StatusOK, gin.H{"data": users})
 }

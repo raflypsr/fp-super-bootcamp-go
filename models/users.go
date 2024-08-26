@@ -19,10 +19,10 @@ type (
 		Role      string     `json:"role"`
 		CreatedAt time.Time  `gorm:"not null;" json:"created_at"`
 		UpdatedAt time.Time  `gorm:"not null;" json:"updated_at"`
-		Profile   Profile    `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
-		Reviews   []Reviews  `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"-"`
-		Likes     []Likes    `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
-		Comments  []Comments `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
+		Profile   Profile    `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+		Reviews   []Reviews  `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
+		Likes     []Likes    `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+		Comments  []Comments `gorm:"foreignKey:UserID; constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	}
 )
 
