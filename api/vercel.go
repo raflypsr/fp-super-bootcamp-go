@@ -30,7 +30,7 @@ func init() {
 
 	//programmatically set swagger info
 	docs.SwaggerInfo.Title = "Review Book REST API"
-	docs.SwaggerInfo.Description = "This is REST API Review Book."
+	docs.SwaggerInfo.Description = "This is REST API Review Book. some routes require to role admin"
 	docs.SwaggerInfo.Version = "1.0"
 	if environment == "development" {
 		docs.SwaggerInfo.Host = utils.Getenv("HOST", "localhost:8080")
